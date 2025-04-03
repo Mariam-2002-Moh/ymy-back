@@ -45,7 +45,29 @@
         ],
         "post-create-project-cmd": [
             "@php artisan key:generate --ansi"
-        ]
+        ],
+         "post-autoload-dump": [
+        "Illuminate\\Foundation\\ComposerScripts::postAutoloadDump",
+        "@php artisan package:discover --ansi"
+    ],
+    "post-update-cmd": [
+        "@php artisan vendor:publish --tag=laravel-assets --ansi --force",
+        "@php artisan migrate --force"
+    ],
+    "post-root-package-install": [
+        "@php -r \"file_exists('.env') || copy('.env.example', '.env');\""
+    ],
+    "post-create-project-cmd": [
+        "@php artisan key:generate --ansi"
+    ],
+    "pre-install-cmd": [
+        "@php artisan config:clear",
+        "@php artisan cache:clear"
+    ],
+    "pre-update-cmd": [
+        "@php artisan config:clear",
+        "@php artisan cache:clear"
+    ]
     },
     "extra": {
         "branch-alias": {
